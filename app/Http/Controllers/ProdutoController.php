@@ -14,7 +14,10 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        dd('CHEGOU!!!');
+        //dd('CHEGOU!!!');
+        $produtos = Produto::orderBy('nome', 'ASC')->get();
+        dd($produtos);
+
     }
 
     /**
