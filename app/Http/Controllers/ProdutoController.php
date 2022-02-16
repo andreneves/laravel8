@@ -7,6 +7,59 @@ use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
+
+
+    /*
+
+	https://laravel.com/docs/8.x/controllers#actions-handled-by-resource-controller
+
+
+    Dicas sobre resouces
+    index - listar todos os itens
+    create - exibe formulario para criacao
+    store - armazena conteudo do formulário para criacao
+    show - exibe um item
+    edit - formulario de edicao de um item
+    update - salva e edicao de um item
+    destroy - exclui um item
+
+
+
+        //index / listar
+        // $produtos = Produto::orderBy('nome', 'ASC')
+        //             ->get();
+        // dd($produtos);
+
+
+        //store / salvar
+        // $produto = new Produto;
+        // $produto->nome  = 'Monitor Ultrawide 36';
+        // $produto->valor = 3000;
+        // $produto->save();
+
+        // dd('Salvou!');
+
+        //show / exibir
+        // $produto = Produto::findOrFail(4);
+        // dd($produto);
+
+        //update / atualizar
+        // $produto = Produto::findOrFail(4);
+        // $produto->nome  = 'Super Monitor Ultrawide 36 plus';
+        // $produto->valor = 5000;
+        // $produto->save();
+
+        // dd('Atualizou!');
+
+        //destroy / excluir
+        $produto = Produto::findOrFail(4);
+        $produto->delete();
+
+        dd('Excluiu!');
+
+    */
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +67,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        //dd('CHEGOU!!!');
         $produtos = Produto::orderBy('nome', 'ASC')->get();
-        dd($produtos);
 
     }
 
