@@ -68,7 +68,7 @@ class ProdutoController extends Controller
     public function index()
     {
         $produtos = Produto::orderBy('nome', 'ASC')->get();
-
+        return view('produto.index', ['produtos' => $produtos]);
     }
 
     /**
