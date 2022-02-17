@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use Illuminate\Foundation\Console\ViewCacheCommand;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -78,7 +79,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        return view('produto.create');
     }
 
     /**
@@ -89,7 +90,8 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        dd($data);
     }
 
     /**
