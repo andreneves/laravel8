@@ -21,9 +21,18 @@
         <tbody>
 
     @foreach ($produtos as $value)
-        <p>O produto se chama {{ $value->nome }}</p>
+        <tr>
+            <td>{{ $value->id }}</td>
+            <td>{{ $value->nome }}</td>
+            <td>{{ $value->valor }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
     @endforeach
 
+        </tbody>
+    </table>
 
 </body>
 </html>
