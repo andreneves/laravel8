@@ -90,8 +90,26 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        dd($data);
+
+        $messages = [
+            'nome.required'  => 'O campo :attribute é obrigatorio!',
+            'nome.min'       => 'O :attribute precisa ter no mínimo :min.',
+            'valor.required' => 'O campo :attribute é obrigatorio!',
+            'valor.numeric'  => 'O campo :attribute precisa ser numérico!',
+        ];
+
+        $validated = $request->validate([
+            'nome' => 'required|min:5',
+            'valor' => 'required|numeric',
+        ], $messages);
+
+        $produto = new Produto;
+        $produto->nome  = $request->nome;
+        $produto->valor = $request->valor;
+        $produto->save();
+
+        return redirect('/produto')->with('status', 'Produto criado com sucesso!');
+
     }
 
     /**
@@ -100,9 +118,10 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function show(Produto $produto)
+    public function show($id)
     {
-        //
+        $produto = Produto::findOrFail($id);
+        return view('produto.show', ['produto' => $produto]);
     }
 
     /**
@@ -111,9 +130,10 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produto $produto)
+    public function edit($id)
     {
-        //
+        $produto = Produto::findOrFail($id);
+        return view('produto.edit', ['produto' => $produto]);
     }
 
     /**
@@ -123,9 +143,28 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produto $produto)
+    public function update(Request $request, $id)
     {
-        //
+
+        $messages = [
+            'nome.required'  => 'O campo :attribute é obrigatorio!',
+            'nome.min'       => 'O :attribute precisa ter no mínimo :min.',
+            'valor.required' => 'O campo :attribute é obrigatorio!',
+            'valor.numeric'  => 'O campo :attribute precisa ser numérico!',
+        ];
+
+        $validated = $request->validate([
+            'nome' => 'required|min:5',
+            'valor' => 'required|numeric',
+        ], $messages);
+
+        $produto = Produto::findOrFail($id);
+        $produto->nome  = $request->nome;
+        $produto->valor = $request->valor;
+        $produto->save();
+
+        return redirect('/produto')->with('status', 'Produto criado com sucesso!');
+
     }
 
     /**

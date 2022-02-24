@@ -22,8 +22,12 @@ Route::get('/', function () {
 
 
  
-Route::get('/produto', [ProdutoController::class, 'index']);
+Route::get('/produto', [ProdutoController::class, 'index'])->name('produto.index');
 
 Route::get('/produto/create', [ProdutoController::class, 'create'])->name('produto.create');
 Route::post('/produto/create', [ProdutoController::class, 'store'])->name('produto.store');
 
+Route::get('/produto/{id}', [ProdutoController::class, 'show'])->name('produto.show');
+
+Route::get('/produto/{id}/edit', [ProdutoController::class, 'edit'])->name('produto.edit');
+Route::put('/produto/edit', [ProdutoController::class, 'update'])->name('produto.update');
