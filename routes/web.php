@@ -17,11 +17,9 @@ use App\Http\Controllers\ProdutoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/produto');
 });
 
-
- 
 Route::get('/produto', [ProdutoController::class, 'index'])->name('produto.index');
 
 Route::get('/produto/create', [ProdutoController::class, 'create'])->name('produto.create');
