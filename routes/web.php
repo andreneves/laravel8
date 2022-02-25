@@ -30,4 +30,5 @@ Route::post('/produto/create', [ProdutoController::class, 'store'])->name('produ
 Route::get('/produto/{id}', [ProdutoController::class, 'show'])->name('produto.show');
 
 Route::get('/produto/{id}/edit', [ProdutoController::class, 'edit'])->name('produto.edit');
-Route::put('/produto/edit', [ProdutoController::class, 'update'])->name('produto.update');
+Route::put('/produto/{id}', [ProdutoController::class, 'update'])->name('produto.update');
+
