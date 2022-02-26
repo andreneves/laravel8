@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produto;
+use App\Models\Categoria;
 use Illuminate\Foundation\Console\ViewCacheCommand;
 use Illuminate\Http\Request;
 
-class ProdutoController extends Controller
+class CategoriaController extends Controller
 {
 
 
@@ -27,34 +27,34 @@ class ProdutoController extends Controller
 
 
         //index / listar
-        // $produtos = Produto::orderBy('nome', 'ASC')
+        // $categorias = Categoria::orderBy('nome', 'ASC')
         //             ->get();
-        // dd($produtos);
+        // dd($categorias);
 
 
         //store / salvar
-        // $produto = new Produto;
-        // $produto->nome  = 'Monitor Ultrawide 36';
-        // $produto->valor = 3000;
-        // $produto->save();
+        // $categoria = new Categoria;
+        // $categoria->nome  = 'Monitor Ultrawide 36';
+        // $categoria->valor = 3000;
+        // $categoria->save();
 
         // dd('Salvou!');
 
         //show / exibir
-        // $produto = Produto::findOrFail(4);
-        // dd($produto);
+        // $categoria = Categoria::findOrFail(4);
+        // dd($categoria);
 
         //update / atualizar
-        // $produto = Produto::findOrFail(4);
-        // $produto->nome  = 'Super Monitor Ultrawide 36 plus';
-        // $produto->valor = 5000;
-        // $produto->save();
+        // $categoria = Categoria::findOrFail(4);
+        // $categoria->nome  = 'Super Monitor Ultrawide 36 plus';
+        // $categoria->valor = 5000;
+        // $categoria->save();
 
         // dd('Atualizou!');
 
         //destroy / excluir
-        $produto = Produto::findOrFail(4);
-        $produto->delete();
+        $categoria = Categoria::findOrFail(4);
+        $categoria->delete();
 
         dd('Excluiu!');
 
@@ -68,8 +68,8 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $produtos = Produto::orderBy('nome', 'ASC')->get();
-        return view('produto.index', ['produtos' => $produtos]);
+        $categorias = Categoria::orderBy('nome', 'ASC')->get();
+        return view('categoria.index', ['categorias' => $categorias]);
     }
 
     /**
@@ -79,7 +79,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produto.create');
+        return view('categoria.create');
     }
 
     /**
@@ -94,53 +94,49 @@ class ProdutoController extends Controller
         $messages = [
             'nome.required'  => 'O campo :attribute é obrigatorio!',
             'nome.min'       => 'O :attribute precisa ter no mínimo :min.',
-            'valor.required' => 'O campo :attribute é obrigatorio!',
-            'valor.numeric'  => 'O campo :attribute precisa ser numérico!',
         ];
 
         $validated = $request->validate([
             'nome' => 'required|min:5',
-            'valor' => 'required|numeric',
         ], $messages);
 
-        $produto = new Produto;
-        $produto->nome  = $request->nome;
-        $produto->valor = $request->valor;
-        $produto->save();
+        $categoria = new Categoria;
+        $categoria->nome  = $request->nome;
+        $categoria->save();
 
-        return redirect('/produto')->with('status', 'Produto criado com sucesso!');
+        return redirect('/categoria')->with('status', 'Categoria criado com sucesso!');
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Produto  $produto
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $produto = Produto::findOrFail($id);
-        return view('produto.show', ['produto' => $produto]);
+        $categoria = Categoria::findOrFail($id);
+        return view('categoria.show', ['categoria' => $categoria]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Produto  $produto
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $produto = Produto::findOrFail($id);
-        return view('produto.edit', ['produto' => $produto]);
+        $categoria = Categoria::findOrFail($id);
+        return view('categoria.edit', ['categoria' => $categoria]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Produto  $produto
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -149,36 +145,32 @@ class ProdutoController extends Controller
         $messages = [
             'nome.required'  => 'O campo :attribute é obrigatorio!',
             'nome.min'       => 'O :attribute precisa ter no mínimo :min.',
-            'valor.required' => 'O campo :attribute é obrigatorio!',
-            'valor.numeric'  => 'O campo :attribute precisa ser numérico!',
         ];
 
         $validated = $request->validate([
             'nome' => 'required|min:5',
-            'valor' => 'required|numeric',
         ], $messages);
 
-        $produto = Produto::findOrFail($id);
-        $produto->nome  = $request->nome;
-        $produto->valor = $request->valor;
-        $produto->save();
+        $categoria = Categoria::findOrFail($id);
+        $categoria->nome  = $request->nome;
+        $categoria->save();
 
-        return redirect('/produto')->with('status', 'Produto atualizado com sucesso!');
+        return redirect('/categoria')->with('status', 'Categoria atualizado com sucesso!');
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Produto  $produto
+     * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $produto = Produto::findOrFail($id);
-        $produto->delete();
+        $categoria = Categoria::findOrFail($id);
+        $categoria->delete();
 
-        return redirect('/produto')->with('status', 'Produto excluido com sucesso!');
+        return redirect('/categoria')->with('status', 'Categoria excluido com sucesso!');
 
     }
 }
