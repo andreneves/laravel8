@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use App\Models\Categoria;
 use Illuminate\Foundation\Console\ViewCacheCommand;
 use Illuminate\Http\Request;
 
@@ -79,7 +80,8 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produto.create');
+        $categorias = Categoria::orderBy('nome', 'ASC')->pluck('nome', 'id');
+        return view('produto.create', ['categorias' => $categorias]);
     }
 
     /**

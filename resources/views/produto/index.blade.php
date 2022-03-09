@@ -26,6 +26,7 @@
         <thead>
             <tr>
                 <th>id</th>
+                <th>categoria</th>
                 <th>nome</th>
                 <th>valor</th>
                 <th></th>
@@ -38,6 +39,7 @@
     @foreach ($produtos as $value)
         <tr>
             <td>{{ $value->id }}</td>
+            <td>{{ $value->categoria->nome }}</td>
             <td>{{ $value->nome }}</td>
             <td>{{ $value->valor }}</td>
             <td><a href="{{ url('produto/' . $value->id) }}">Visualizar</a></td>

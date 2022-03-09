@@ -15,16 +15,19 @@ class ProdutoSeeder extends Seeder
     public function run()
     {
         Produto::create([
-            'nome'  	=> 'Teclado',
-            'valor'     => 150
+            'categoria_id'  => 1,
+            'nome'  	    => 'Teclado',
+            'valor'         => 150
         ]);
 
         Produto::create([
+            'categoria_id'  => 2,
             'nome'  	=> 'Mouse',
             'valor'     => 50
         ]);
 
         Produto::create([
+            'categoria_id'  => 3,
             'nome'  	=> 'Gabinete',
             'valor'     => 200
         ]);
