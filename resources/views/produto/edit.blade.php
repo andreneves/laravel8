@@ -20,6 +20,9 @@
 
 {{ Form::model($produto, array('route' => array('produto.update', $produto->id), 'method' => 'PUT')) }}
 
+{{ Form::label('categoria', 'Categoria') }}
+{{ Form::select('categoria_id', $categorias, $produto->categoria_id) }}
+<br>
 {{ Form::label('nome', 'Nome') }}
 {{ Form::text('nome', $produto->nome) }}
 <br>

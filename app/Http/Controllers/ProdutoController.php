@@ -94,6 +94,7 @@ class ProdutoController extends Controller
     {
 
         $messages = [
+            'categoria_id.required'  => 'O campo categoria é obrigatorio!',
             'nome.required'  => 'O campo :attribute é obrigatorio!',
             'nome.min'       => 'O :attribute precisa ter no mínimo :min.',
             'valor.required' => 'O campo :attribute é obrigatorio!',
@@ -101,13 +102,15 @@ class ProdutoController extends Controller
         ];
 
         $validated = $request->validate([
-            'nome' => 'required|min:5',
-            'valor' => 'required|numeric',
+            'categoria_id'  => 'required',
+            'nome'          => 'required|min:5',
+            'valor'         => 'required|numeric',
         ], $messages);
 
         $produto = new Produto;
-        $produto->nome  = $request->nome;
-        $produto->valor = $request->valor;
+        $produto->categoria_id  = $request->categoria_id;
+        $produto->nome          = $request->nome;
+        $produto->valor         = $request->valor;
         $produto->save();
 
         return redirect('/produto')->with('status', 'Produto criado com sucesso!');
@@ -134,8 +137,9 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
+        $categorias = Categoria::orderBy('nome', 'ASC')->pluck('nome', 'id');
         $produto = Produto::findOrFail($id);
-        return view('produto.edit', ['produto' => $produto]);
+        return view('produto.edit', ['produto' => $produto, 'categorias' => $categorias]);
     }
 
     /**
