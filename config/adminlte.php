@@ -242,12 +242,12 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'categorias',
+            'text' => 'Categorias',
             'url'  => 'categoria',
             //'can'  => 'manage-blog',
         ],
         [
-            'text' => 'produtos',
+            'text' => 'Produtos',
             'url'  => 'produto',
             //'can'  => 'manage-blog',
         ],

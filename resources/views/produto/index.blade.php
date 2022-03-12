@@ -27,7 +27,7 @@
                     }
                 </script>
                 
-                <a href="{{ URL::to('produto/create') }}">CRIAR</a>
+                <a href="{{ URL::to('produto/create') }}"><button type="button" class="btn btn-block btn-success btn-sm">Criar</button></a>
                 
                     <table class="table no-margin">
                         <thead>
@@ -49,8 +49,8 @@
                             <td>{{ $value->categoria->nome }}</td>
                             <td>{{ $value->nome }}</td>
                             <td>{{ $value->valor }}</td>
-                            <td><a href="{{ url('produto/' . $value->id) }}">Visualizar</a></td>
-                            <td><a href="{{ url('produto/' . $value->id . '/edit') }}">Editar</a></td>
+                            <td><a href="{{ url('produto/' . $value->id) }}"><button type="button" class="btn btn-block btn-primary btn-sm">Visualizar</button></a></td>
+                            <td><a href="{{ url('produto/' . $value->id . '/edit') }}"><button type="button" class="btn btn-block btn-warning btn-sm">Editar</button></a></td>
                             <td>
                                 {{ Form::open(array('url' => 'produto/' . $value->id, 'onsubmit' => 'return ConfirmDelete()')) }}
                                 {{ Form::hidden('_method', 'DELETE') }}
