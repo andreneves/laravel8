@@ -16,9 +16,9 @@ use App\Http\Controllers\CategoriaController;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/produto');
-});
+//Route::get('/', function () {
+//    return redirect('/produto');
+//});
 
 // ----------------------------------------- PRODUTO --------------------------------------
 
@@ -54,3 +54,16 @@ Route::delete('/categoria/{id}', [CategoriaController::class, 'destroy'])->name(
 
 
 // ----------------------------------------- CATEGORIA --------------------------------------
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
