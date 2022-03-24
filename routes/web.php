@@ -17,8 +17,11 @@ use App\Http\Controllers\CategoriaController;
 */
 
 //Route::get('/', function () {
-//    return redirect('/produto');
+//    return redirect('/home');
 //});
+
+Route::get('/teste', [App\Http\Controllers\HomeController::class, 'teste'])->name('teste');
+
 
 // ----------------------------------------- PRODUTO --------------------------------------
 
@@ -59,11 +62,3 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
