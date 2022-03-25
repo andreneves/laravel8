@@ -16,9 +16,9 @@ use App\Http\Controllers\CategoriaController;
 |
 */
 
-//Route::get('/', function () {
-//    return redirect('/home');
-//});
+Route::get('/', function () {
+    return redirect('/home');
+});
 
 Route::get('/teste', [App\Http\Controllers\HomeController::class, 'teste'])->name('teste');
 
