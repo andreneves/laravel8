@@ -26,10 +26,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
+        //$this->registerPolicies();
 
         Gate::define('is_admin', function (User $user) {
             return $user->perfil === 'admin';
         });
+
+        Gate::define('is_padrao', function (User $user) {
+            return $user->perfil === 'padrao';
+        });
+
     }
 }

@@ -45,13 +45,16 @@
             <td>{{ $value->id }}</td>
             <td>{{ $value->nome }}</td>
             <td><a href="{{ url('categoria/' . $value->id) }}"><button type="button" class="btn btn-block btn-primary btn-sm">Visualizar</button></a></td>
-            <td><a href="{{ url('categoria/' . $value->id . '/edit') }}"><button type="button" class="btn btn-block btn-warning btn-sm">Editar</button></a></td>
-            <td>
-                {{ Form::open(array('url' => 'categoria/' . $value->id, 'onsubmit' => 'return ConfirmDelete()')) }}
-                {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('Excluir', array('class' => 'btn btn-danger')) }}
-                {{ Form::close() }}
-            </td>
+            @can('is_admin')
+                <td><a href="{{ url('categoria/' . $value->id . '/edit') }}"><button type="button" class="btn btn-block btn-warning btn-sm">Editar</button></a></td>
+                <td>
+                    {{ Form::open(array('url' => 'categoria/' . $value->id, 'onsubmit' => 'return ConfirmDelete()')) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    {{ Form::submit('Excluir', array('class' => 'btn btn-danger')) }}
+                    {{ Form::close() }}
+                </td>
+            @endcan
+
         </tr>
     @endforeach
 

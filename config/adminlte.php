@@ -244,12 +244,12 @@ return [
         [
             'text' => 'Categorias',
             'url'  => 'categoria',
-            //'can'  => 'manage-blog',
+            //'can'  => 'is_admin|is_padrao',
         ],
         [
             'text' => 'Produtos',
             'url'  => 'produto',
-            //'can'  => 'manage-blog',
+            'can'  => 'is_padrao',
         ],
         [
             'text' => 'blog',
