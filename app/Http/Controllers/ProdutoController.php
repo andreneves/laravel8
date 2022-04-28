@@ -92,7 +92,7 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-
+ 
 
         $messages = [
             'categoria_id.required'  => 'O campo categoria é obrigatorio!',
