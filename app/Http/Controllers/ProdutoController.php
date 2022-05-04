@@ -69,7 +69,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $produtos = Produto::orderBy('nome', 'ASC')->get();
+        $produtos = Produto::orderBy('nome', 'ASC')->paginate(2);
         return view('produto.index', ['produtos' => $produtos]);
     }
 
